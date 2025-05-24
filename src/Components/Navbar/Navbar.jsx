@@ -15,7 +15,7 @@ const Navbar = () => {
 
                 {/* Logo */}
                 <div className="text-3xl font-extrabold text-orange-600 tracking-wide">
-                    SnapEats<span className="text-black">.</span>
+                    SnapEats<span className="text-orange-600">.</span>
                 </div>
 
                 {/* Desktop Navigation Links */}
@@ -39,13 +39,13 @@ const Navbar = () => {
                 <div className="md:hidden text-3xl text-gray-700 cursor-pointer" onClick={handleSidebar}>
                    
                     {
-                        sidebar? <RxHamburgerMenu size={30} />:<RxCross1 size={30}/>
+                        !sidebar? <RxHamburgerMenu size={30} />:<RxCross1 size={30}/>
                     }
                 </div>
 
                 {/* Sidebar (Mobile View) */}
                 {sidebar && (
-                    <div className='absolute w-full top-17 right-0 p-2 pb-10 z-50'>
+                    <div className='absolute w-full top-17 right-0 p-2 pb-10 z-50 bg-white'>
                         <ul className="w-full mt-12 flex flex-col gap-5 items-center text-gray-800 font-medium">
                             <li className="hover:text-orange-500 cursor-pointer text-xl">Home</li>
                             <li className="hover:text-orange-500 cursor-pointer text-xl">Menu</li>
