@@ -19,11 +19,11 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Navigation Links */}
-                <ul className="hidden md:flex gap-10 text-gray-700 text-lg font-medium">
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer">Home</li>
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer">Menu</li>
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer">About Us</li>
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer">Contact Us</li>
+                <ul className="hidden md:flex gap-6 text-gray-700 text-lg font-medium">
+                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Home</li>
+                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Menu</li>
+                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">About Us</li>
+                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Contact Us</li>
                 </ul>
 
                 {/* Desktop Icons and Sign In */}
@@ -47,10 +47,10 @@ const Navbar = () => {
                 {sidebar && (
                     <div className='absolute w-full top-17 right-0 p-2 pb-10 z-50 bg-white'>
                         <ul className="w-full mt-12 flex flex-col gap-5 items-center text-gray-800 font-medium">
-                            <li className="hover:text-orange-500 cursor-pointer text-xl">Home</li>
-                            <li className="hover:text-orange-500 cursor-pointer text-xl">Menu</li>
-                            <li className="hover:text-orange-500 cursor-pointer text-xl">About Us</li>
-                            <li className="hover:text-orange-500 cursor-pointer text-xl">Contact Us</li>
+                            <li className="hover:text-orange-500 cursor-pointer text-xl hover:underline">Home</li>
+                            <li className="hover:text-orange-500 cursor-pointer text-xl hover:underline">Menu</li>
+                            <li className="hover:text-orange-500 cursor-pointer text-xl hover:underline">About Us</li>
+                            <li className="hover:text-orange-500 cursor-pointer text-xl hover:underline">Contact Us</li>
                             <li className="pt-4">
                                 <button className="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 transition hover:cursor-pointer">
                                     Sign In

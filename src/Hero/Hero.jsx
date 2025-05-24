@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import data from "../assets/HeroImages/data.js";
 import './Hero.css'; // ← import the CSS file
+import { contextStore } from '../Context/storeContext.jsx';
 
 const Hero = () => {
   const [slider, setSlider] = useState(0);
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setSlider((prev) => (prev === data.length - 1 ? 0 : prev + 1));
@@ -23,6 +24,8 @@ const Hero = () => {
           className="fade-image"
         />
       </div>
+
+   
     </section>
   );
 };

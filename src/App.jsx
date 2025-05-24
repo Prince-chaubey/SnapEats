@@ -1,5 +1,5 @@
-import React from 'react'
-import Navbar from './Components/Navbar/Navbar'
+import React, { useContext } from 'react'
+import { ContextProvider, contextStore } from './Context/storeContext'
 import Home from './Home/Home'
 
 const App = () => {
