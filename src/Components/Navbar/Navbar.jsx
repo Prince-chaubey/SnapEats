@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { assets } from '../../assets/assets';
 import { RxCross1 } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     const [sidebar, setSidebar] = useState(false);
 
@@ -20,10 +21,21 @@ const Navbar = () => {
 
                 {/* Desktop Navigation Links */}
                 <ul className="hidden md:flex gap-6 text-gray-700 text-lg font-medium">
+                   <Link to="/">
                     <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Home</li>
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Menu</li>
+                   </Link>
+
+                    <Link to="/Menu">
+                     <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Menu</li>
+                    </Link>
+
+                    <Link to="/About">
                     <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">About Us</li>
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Contact Us</li>
+                    </Link>
+
+                    <Link to="/Contact">
+                     <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Contact Us</li>
+                    </Link>
                 </ul>
 
                 {/* Desktop Icons and Sign In */}
