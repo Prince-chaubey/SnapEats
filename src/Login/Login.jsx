@@ -19,7 +19,7 @@ const Login = () => {
             <img
               src={assets.cross_icon}
               alt="Close"
-              className="w-5 h-5 object-contain"
+              className="w-5 h-5 object-contain hover:cursor-pointer"
             />
           </button>
         </div>

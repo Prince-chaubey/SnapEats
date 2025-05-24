@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Logo from "./logo.gif"
 import { contextStore } from '../../Context/storeContext';
 import Login from '../../Login/Login';
-import SignUp from '../../Login/Sign';
+import SignUp from '../../Login/SignUp';
 
 
 const Navbar = () => {
