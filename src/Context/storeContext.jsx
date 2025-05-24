@@ -5,6 +5,8 @@ export const contextStore = createContext();
 
 export const ContextProvider = (props) => {
   const [cartItem, setCartItem] = useState({});
+  const [showLoginPage,setShowLoginPage]=useState(false);
+  const [showSignUp,setShowSignUp]=useState(false);
 
   const addCart = (id) => {
     setCartItem((prev) => ({
@@ -25,7 +27,7 @@ export const ContextProvider = (props) => {
   };
 
   return (
-    <contextStore.Provider value={{ food_list, cartItem, addCart, removeCart }}>
+    <contextStore.Provider value={{ food_list, cartItem, addCart, removeCart,showLoginPage,setShowLoginPage,showSignUp,setShowSignUp}}>
       {props.children}
     </contextStore.Provider>
   );
