@@ -37,25 +37,22 @@ const Navbar = () => {
 
                 {/* Hamburger Icon for Mobile */}
                 <div className="md:hidden text-3xl text-gray-700 cursor-pointer" onClick={handleSidebar}>
-                    <RxHamburgerMenu size={30} />
+                   
+                    {
+                        sidebar? <RxHamburgerMenu size={30} />:<RxCross1 size={30}/>
+                    }
                 </div>
 
                 {/* Sidebar (Mobile View) */}
                 {sidebar && (
-                    <div className='absolute w-full top-17 right-0 pb-10 z-50'>
-
-                        <div className='close button hover:cursor-pointer' onClick={handleSidebar}>
-                            <RxCross1 size={30} className='absolute right-0' />
-                        </div>
-
-
+                    <div className='absolute w-full top-17 right-0 p-2 pb-10 z-50'>
                         <ul className="w-full mt-12 flex flex-col gap-5 items-center text-gray-800 font-medium">
                             <li className="hover:text-orange-500 cursor-pointer text-xl">Home</li>
                             <li className="hover:text-orange-500 cursor-pointer text-xl">Menu</li>
                             <li className="hover:text-orange-500 cursor-pointer text-xl">About Us</li>
                             <li className="hover:text-orange-500 cursor-pointer text-xl">Contact Us</li>
                             <li className="pt-4">
-                                <button className="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 hover:cursor-pointer transition">
+                                <button className="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 transition hover:cursor-pointer">
                                     Sign In
                                 </button>
                             </li>
