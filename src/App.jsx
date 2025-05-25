@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Contact from './Contact/Contact';
 import Cart from './Cart/Cart';
+import PlaceOrder from './PlaceOrder/PlaceOrder';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/About' element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Cart" element={<Cart />} />
+          <Route path="/PlaceOrder" element={<PlaceOrder/>} />
 
 
         </Routes>
