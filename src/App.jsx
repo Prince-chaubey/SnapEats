@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Contact from './Contact/Contact';
+import Cart from './Cart/Cart';
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
           <Route path='/Menu' element={<Foodlist />} />
           <Route path='/About' element={<About />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/Cart" element={<Cart />} />
+
 
         </Routes>
         <Footer />

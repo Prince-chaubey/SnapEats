@@ -7,6 +7,7 @@ import Logo from "./logo.gif"
 import { contextStore } from '../../Context/storeContext';
 import Login from '../../Login/Login';
 import SignUp from '../../Login/SignUp';
+import { LuDot } from "react-icons/lu";
 
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
         setSidebar(!sidebar);
     }
 
-    const{showLoginPage,setShowLoginPage,showSignUp,setShowSignUp}=useContext(contextStore);
+    const { cartItem, showLoginPage, setShowLoginPage, showSignUp, setShowSignUp } = useContext(contextStore);
 
     return (
         <header className="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
@@ -24,49 +25,59 @@ const Navbar = () => {
 
                 {/* Logo */}
                 <div className="text-2xl font-extrabold text-orange-600 tracking-wide flex items-center">
-                    
+
                     <img src={Logo} alt="mainlogo" className='h-15 inline' />
                     <span>SnapEats<span className="text-orange-600">.</span></span>
-                    
+
                 </div>
 
                 {/* Desktop Navigation Links */}
                 <ul className="hidden md:flex gap-6 text-gray-700 text-lg font-medium">
-                   <Link to="/">
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Home</li>
-                   </Link>
+                    <Link to="/">
+                        <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Home</li>
+                    </Link>
 
                     <Link to="/Menu">
-                     <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Menu</li>
+                        <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Menu</li>
                     </Link>
 
                     <Link to="/About">
-                    <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">About Us</li>
+                        <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">About Us</li>
                     </Link>
 
                     <Link to="/Contact">
-                     <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Contact Us</li>
+                        <li className="hover:text-orange-500 transition duration-300 cursor-pointer hover:underline">Contact Us</li>
                     </Link>
                 </ul>
 
-               
+
                 <div className="hidden md:flex items-center gap-6">
                     <img src={assets.search_icon} alt="search" className="w-6 h-6 cursor-pointer hover:scale-110 transition" />
-                    <img src={assets.bag_icon} alt="cart" className="w-6 h-6 cursor-pointer hover:scale-110 transition" />
-                    <button className="bg-orange-500 text-white px-5 py-2 rounded-full font-semibold hover:bg-orange-600 transition hover:cursor-pointer" onClick={()=>setShowLoginPage(!showLoginPage)}>
+
+                    <div>
+                        <Link to="/Cart">
+                            <img src={assets.bag_icon} alt="cart" className="w-6 h-6 cursor-pointer hover:scale-110 transition filter invert" />
+                            {Object.keys(cartItem).length > 0 && (
+                                <LuDot className='text-orange-600 absolute top-3' size={40} />
+                            )}
+                        </Link>
+                    </div>
+
+                    <button className="bg-orange-500 text-white px-5 py-2 rounded-full font-semibold hover:bg-orange-600 transition hover:cursor-pointer" onClick={() => setShowLoginPage(!showLoginPage)}>
                         Sign In
                     </button>
+
                 </div>
 
-                
+
                 <div className="md:hidden text-3xl text-gray-700 cursor-pointer" onClick={handleSidebar}>
-                   
+
                     {
-                        !sidebar? <RxHamburgerMenu size={30} />:<RxCross1 size={30}/>
+                        !sidebar ? <RxHamburgerMenu size={30} /> : <RxCross1 size={30} />
                     }
                 </div>
 
-                
+
                 {sidebar && (
                     <div className='absolute w-full top-17 right-0 p-2 pb-10 z-50 bg-white'>
                         <ul className="w-full mt-12 flex flex-col gap-5 items-center text-gray-800 font-medium">
@@ -75,7 +86,7 @@ const Navbar = () => {
                             <li className="hover:text-orange-500 cursor-pointer text-xl hover:underline">About Us</li>
                             <li className="hover:text-orange-500 cursor-pointer text-xl hover:underline">Contact Us</li>
                             <li className="pt-4">
-                                <button className="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 transition hover:cursor-pointer" onClick={()=>setShowLoginPage(!showLoginPage)}>
+                                <button className="bg-orange-500 text-white px-4 py-2 rounded-full w-full hover:bg-orange-600 transition hover:cursor-pointer" onClick={() => setShowLoginPage(!showLoginPage)}>
                                     Sign In
                                 </button>
                             </li>
@@ -84,9 +95,9 @@ const Navbar = () => {
                     </div>
                 )}
             </nav>
-             {
-                showLoginPage?(showSignUp?<Login/>:<SignUp/>):""
-             }
+            {
+                showLoginPage ? (showSignUp ? <Login /> : <SignUp />) : ""
+            }
         </header>
     );
 };
