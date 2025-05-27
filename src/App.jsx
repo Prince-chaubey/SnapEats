@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-
 import Home from './Home/Home'
 import Foodlist from "../src/Foodlist/Foodlist"
 import About from "../src/About/About"
@@ -8,12 +7,15 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Contact from './Contact/Contact';
 import Cart from './Cart/Cart';
+import toast, { Toaster } from 'react-hot-toast';
+
 import PlaceOrder from './PlaceOrder/PlaceOrder';
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
+      <Toaster/>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />

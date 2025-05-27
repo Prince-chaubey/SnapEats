@@ -79,7 +79,10 @@ export const assets = {
     profile_icon,
     logout_icon,
     bag_icon,
-    parcel_icon
+    parcel_icon,
+    quality_icon: 'https://cdn-icons-png.flaticon.com/512/1063/1063245.png',
+  delivery_icon: 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png',
+  support_icon: 'https://cdn-icons-png.flaticon.com/512/1828/1828919.png',
 }
 
 export const menu_list = [
