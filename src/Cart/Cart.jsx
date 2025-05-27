@@ -4,10 +4,10 @@ import { assets } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-    const { food_list, cartItem, removeCart, addCart, subtotal, total, deliveryFee } = useContext(contextStore);
-    const navigate = useNavigate();
+    const { food_list, cartItem, removeCart, addCart,total,subtotal,deliveryFee } = useContext(contextStore);
+    const navigate=useNavigate();
 
-
+  
 
     return (
         <div className="my-8 px-4 sm:px-6 lg:px-20">
@@ -30,7 +30,7 @@ const Cart = () => {
             {food_list.map((food, index) => {
                 const quantity = cartItem[food._id];
                 if (quantity > 0) {
-                    const total = quantity * food.price * 100;
+                    const total = quantity * food.price;
                     return (
                         <div
                             key={index}
@@ -40,7 +40,7 @@ const Cart = () => {
                                 <img src={food.image} alt={food.name} className="h-15 w-15 object-cover rounded" />
                             </div>
                             <div className="col-span-2 text-center">{food.name}</div>
-                            <div className="col-span-2">₹{food.price * 100}</div>
+                            <div className="col-span-2">₹{food.price}</div>
                             <div className="col-span-2 flex items-center justify-center gap-2">
                                 <button onClick={() => removeCart(food._id)} className="px-2 py-1 bg-gray-200 rounded cursor-pointer">-</button>
                                 <span>{quantity}</span>
@@ -58,9 +58,9 @@ const Cart = () => {
                 return null;
             })}
 
-
+            {/* Totals and Promo Section */}
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-
+                {/* Cart Totals */}
                 <div className="border p-6 rounded-lg shadow-md bg-white">
                     <h3 className="text-2xl font-semibold mb-4 text-gray-800">Cart Totals</h3>
 
@@ -71,21 +71,28 @@ const Cart = () => {
 
                     <div className="flex justify-between mb-3 text-gray-700">
                         <span>Delivery Fee</span>
-                        <span>₹{subtotal === 0 ? 0 : deliveryFee}</span>
+                        <span>₹{subtotal===0?0:deliveryFee}</span>
                     </div>
 
                     <hr className="my-4" />
 
                     <div className="flex justify-between text-lg font-semibold text-gray-800">
                         <span>Total</span>
-                        <span>₹{subtotal === 0 ? 0 : total}</span>
+                        <span>₹{subtotal===0?0:total}</span>
                     </div>
 
-                    {Object.keys(cartItem).length > 0 && (
-                        <button className="w-full mt-6 bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition cursor-pointer" onClick={() => navigate('/PlaceOrder')}>
-                            Proceed to Checkout
-                        </button>
-                    )}
+                    {
+                        cartItem && Object.keys(cartItem).length > 0 ? (
+                            <button
+                                onClick={() => navigate('/PlaceOrder')}
+                                className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition mt-6"
+                            >
+                                Proceed to Checkout
+                            </button>
+                        ) : (
+                            <p className="text-gray-500 mt-6">Your cart is empty.</p>
+                        )
+                    }
                 </div>
 
                 {/* Promo Code Section */}
@@ -106,7 +113,6 @@ const Cart = () => {
                         >
                             Apply
                         </button>
-                       
                     </div>
                 </div>
             </div>

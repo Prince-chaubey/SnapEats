@@ -5,7 +5,7 @@ import { contextStore } from '../Context/storeContext';
 const Login = () => {
   const { setShowLoginPage,showLoginPage,setShowSignUp,showSignUp } = useContext(contextStore);
   return (
-    <div className="fixed inset-0  bg-opacity-10 backdrop-blur flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-opacity-30 flex justify-center items-center z-50">
       <div className="bg-white shadow-lg w-[90%] max-w-md p-6 rounded-xl relative">
         
         {/* Header */}
