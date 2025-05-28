@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { assets } from '../../assets/assets';
 import { RxCross1 } from "react-icons/rx";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from "./logo.gif"
 import { contextStore } from '../../Context/storeContext';
 import Login from '../../Login/Login';
@@ -12,7 +12,7 @@ import { LuDot } from "react-icons/lu";
 
 const Navbar = () => {
     const [sidebar, setSidebar] = useState(false);
-
+    const navigate=useNavigate();
     function handleSidebar() {
         setSidebar(!sidebar);
     }
@@ -24,7 +24,7 @@ const Navbar = () => {
             <nav className="container mx-auto flex justify-between items-center">
 
                 {/* Logo */}
-                <div className="text-2xl font-extrabold text-orange-600 tracking-wide flex items-center">
+                <div className="text-2xl font-extrabold text-orange-600 tracking-wide flex items-center" onClick={()=>navigate("/")}>
 
                     <img src={Logo} alt="mainlogo" className='h-15 inline' />
                     <span>SnapEats<span className="text-orange-600">.</span></span>
@@ -52,7 +52,9 @@ const Navbar = () => {
 
 
                 <div className="hidden md:flex items-center gap-6">
+                   <Link to="/SearchFood">
                     <img src={assets.search_icon} alt="search" className="w-6 h-6 cursor-pointer hover:scale-110 transition" />
+                   </Link>
 
                     <div>
                         <Link to="/Cart">

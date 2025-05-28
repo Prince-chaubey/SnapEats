@@ -8,6 +8,12 @@ export const ContextProvider = (props) => {
   const [showLoginPage,setShowLoginPage]=useState(false);
   const [showSignUp,setShowSignUp]=useState(false);
 
+  const [user,setUser]=useState({
+    name:"",
+    email:"",
+    password:"",
+  });
+
   const addCart = (id) => {
     setCartItem((prev) => ({
       ...prev,
@@ -36,8 +42,11 @@ export const ContextProvider = (props) => {
     });
   };
 
+
+  
+
   return (
-    <contextStore.Provider value={{ food_list, cartItem, addCart, removeCart,showLoginPage,setShowLoginPage,showSignUp,setShowSignUp,deliveryFee,subtotal,total}}>
+    <contextStore.Provider value={{ food_list, cartItem, addCart, removeCart,showLoginPage,setShowLoginPage,showSignUp,setShowSignUp,deliveryFee,subtotal,total,user,setUser}}>
       {props.children}
     </contextStore.Provider>
   );

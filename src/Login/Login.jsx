@@ -1,9 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { contextStore } from '../Context/storeContext';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const { setShowLoginPage,showLoginPage,setShowSignUp,showSignUp } = useContext(contextStore);
+
+  const [user,setUser]=useState({
+    email:"",
+    password:""
+  })
+  const handleChange=(e)=>{
+    const {name,value}=e.target;
+    setUser({
+      ...user,
+      [name]:value
+    });
+  }
+
+    const handleSubmit=(e)=>{
+      e.preventDefault();
+      if(!user.email || !user.password){
+        toast.error("Please fill all the fields to login!");
+        return;
+      }
+      toast.success("Login Successful!");
+      setUser({
+        email:"",
+        password:""
+      })
+      setShowLoginPage(!showLoginPage);
+    }
+
   return (
     <div className="fixed inset-0 bg-opacity-30 flex justify-center items-center z-50">
       <div className="bg-white shadow-lg w-[90%] max-w-md p-6 rounded-xl relative">
@@ -14,6 +42,7 @@ const Login = () => {
           <button
             type="button"
             onClick={() => setShowLoginPage(!showLoginPage)}
+          
             className="text-gray-500 hover:text-gray-700"
           >
             <img
@@ -25,15 +54,17 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form className="space-y-5" onChange={handleChange} onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
             <input
               type="email"
               id="email"
+              name='email'
+              value={user.email}
               placeholder="Enter your email"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              required
+              
             />
           </div>
 
@@ -41,16 +72,18 @@ const Login = () => {
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <input
               type="password"
+              name='password'
+              value={user.password}
               id="password"
               placeholder="Enter your password"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              required
+            
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-orange-600 text-white py-2 rounded-md hover:bg-orange-700 transition duration-300 font-semibold"
+            className="w-full bg-orange-600 text-white py-2 cursor-pointer rounded-md hover:bg-orange-700 transition duration-300 font-semibold"
           >
             Login
           </button>

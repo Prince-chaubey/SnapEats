@@ -3,7 +3,7 @@ import { contextStore } from '../Context/storeContext';
 import { assets } from '../assets/assets';
 
 const Foodlist = () => {
-    const { food_list, cartItem,addCart,removeCart } = useContext(contextStore);
+    const { food_list, cartItem, addCart, removeCart } = useContext(contextStore);
 
 
     return (
@@ -45,7 +45,7 @@ const Foodlist = () => {
                                         src={assets.add_icon_white}
                                         alt="ratings"
                                         className="object-contain hover:cursor-pointer"
-                                        onClick={()=>addCart(food._id)}
+                                        onClick={() => addCart(food._id)}
                                     />
                                     : (
                                         <div className='flex gap-2 items-center font-semibold'>
@@ -53,14 +53,14 @@ const Foodlist = () => {
                                                 src={assets.remove_icon_red}
                                                 alt="ratings"
                                                 className="object-contain hover:cursor-pointer"
-                                                onClick={()=>removeCart(food._id)}
+                                                onClick={() => removeCart(food._id)}
                                             />
-                                           <p> {cartItem[food._id]}</p>
+                                            <p> {cartItem[food._id]}</p>
                                             <img
                                                 src={assets.add_icon_green}
                                                 alt="ratings"
                                                 className="object-contain hover:cursor-pointer"
-                                                onClick={()=>addCart(food._id)}
+                                                onClick={() => addCart(food._id)}
                                             />
                                         </div>
                                     )

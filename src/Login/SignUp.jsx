@@ -1,11 +1,44 @@
 import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
 import { contextStore } from '../Context/storeContext'
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
-    const {setShowLoginPage,showLoginPage,showSignUp,setShowSignUp}=useContext(contextStore);
+    const {setShowLoginPage,showLoginPage,showSignUp,setShowSignUp,user,setUser}=useContext(contextStore);
+
+    const handleChange=(e)=>{
+      const {name,value}=e.target;
+      setUser({
+        ...user,
+        [name]:value
+      })
+    };
+
+    const handleSubmit=(e)=>{
+      e.preventDefault();
+      if(!user.name || !user.email || !user.password){
+        toast.error("Please fill all the fields");
+        return;
+      }
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailPattern.test(user.email)) {
+      toast.error("Invalid email address");
+      return;
+    }
+    if(user.password.lenght<6){
+      toast.error("Password must be at least 6 characters long");
+      return;
+    }
+      toast.success("Account Created Successfully!");
+      setUser({
+        name:"",
+        email:"",
+        password:""
+      });
+      setShowSignUp(!showSignUp);
+    }
   return (
-    <div className="fixed inset-0 bg-opacity-30 flex justify-center items-center z-50 mt-5">
+    <div className="fixed inset-0 bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50 mt-5">
       <div className="bg-white shadow-lg w-[90%] max-w-md p-8 rounded-xl relative">
         
         {/* Header */}
@@ -20,13 +53,15 @@ const SignUp = () => {
           </button>
         </div>
 
-        {/* Form */}
-        <form className="space-y-5">
+       
+        <form className="space-y-5" onSubmit={handleSubmit} onChange={handleChange}>
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
             <input
               type="text"
               id="name"
+              name='name'
+              value={user.name}
               placeholder="Enter your name"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             />
@@ -36,6 +71,8 @@ const SignUp = () => {
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
             <input
               type="email"
+              name='email'
+              value={user.email}
               id="email"
               placeholder="Enter your email"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -47,6 +84,8 @@ const SignUp = () => {
             <input
               type="password"
               id="password"
+              value={user.pasword}
+              name='password'
               placeholder="Enter your password"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             />
