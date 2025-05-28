@@ -33,7 +33,7 @@ const Login = () => {
     }
 
   return (
-    <div className="fixed inset-0 bg-opacity-30 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50 mt-5">
       <div className="bg-white shadow-lg w-[90%] max-w-md p-6 rounded-xl relative">
         
         {/* Header */}
